@@ -363,3 +363,64 @@ footer {
   vertical-align: middle;
   border: 2px solid #ff8c42;
 }
+
+/* ------------------- */
+/* MOBILE FIXES ADDED BELOW */
+
+@media (max-width: 600px) {
+  nav {
+    margin-left: 0;              /* Remove large left margin on mobile */
+    justify-content: center;     /* Center nav links */
+    flex-wrap: wrap;             /* Allow nav items to wrap */
+  }
+
+  nav a {
+    margin: 0.5rem 1rem;         /* Larger tap area */
+    font-size: 1rem;             /* Slightly bigger font */
+  }
+
+  header {
+    flex-direction: column;      /* Stack header vertically */
+    align-items: center;
+    padding: 1rem 0.5rem;
+  }
+
+  header h1 {
+    font-size: 1.6rem;           /* Smaller heading on mobile */
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-v2 {
+    height: auto;                /* Let hero section grow naturally */
+    padding: 3rem 1rem;          /* Add horizontal padding */
+  }
+
+  .hero-glass {
+    max-width: 100%;             /* Full width */
+    padding: 2rem 1.5rem;        /* Smaller padding */
+    font-size: 0.9rem;           /* Slightly smaller text */
+  }
+
+  .recipe-grid {
+    grid-template-columns: 1fr;  /* Stack recipe cards vertically */
+    gap: 1.5rem;
+  }
+
+  .meal-plans-grid {
+    flex-direction: column;      /* Stack meal plans vertically */
+    gap: 1.5rem;
+  }
+
+  .recipe-card button,
+  .join-section button,
+  .auth-btn {
+    width: 100%;                 /* Full width buttons */
+    font-size: 1.1rem;
+    padding: 1rem;
+  }
+
+  footer {
+    font-size: 0.85rem;
+    padding: 1.5rem 1rem;
+  }
+}
