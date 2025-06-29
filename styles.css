@@ -1,0 +1,365 @@
+/* Global Styles */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(to right, #e2ded9, #fef6f2);
+  color: #333;
+}
+
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0.5rem;
+  background: #f3dcc3;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+header h1 {
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+nav {
+    margin-left: 38rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+nav a {
+    margin-right: 1rem;
+    text-decoration: none;
+    font-weight: 600;
+    color: #333;
+    transition: color 0.2s ease;
+}
+
+nav a:hover {
+  color: #ff8c42;
+  box-shadow: 0 4px 20px rgba(232, 93, 6, 0.4);
+  transform: scale(1.05);
+}
+
+/* Hero Section */
+.hero-v2 {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+  position: relative;
+}
+
+.hero-glass {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  padding: 3rem;
+  text-align: center;
+  backdrop-filter: blur(15px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+  color: white;
+  max-width: 600px;
+  animation: fadeUp 1s ease-out;
+}
+
+.hero-glass h1 {
+  font-size: 2.8rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.hero-glass p {
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin-bottom: 2rem;
+}
+
+.cta.modern {
+  background: white;
+  color: #ff8c42;
+  padding: 0.75rem 2rem;
+  font-weight: bold;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.cta.modern:hover {
+  background: #ff8c42;
+  color: white;
+  box-shadow: 0 4px 20px rgba(255, 140, 66, 0.4);
+  transform: scale(1.05);
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Recipes Section */
+.recipes-section {
+  background: #fffaf4;
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.recipe-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.recipe-card {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.recipe-card:hover {
+  transform: translateY(-5px);
+}
+
+.recipe-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.recipe-content {
+  padding: 1rem;
+  text-align: center;
+}
+
+.recipe-content h3 {
+  margin: 0.5rem 0;
+  font-size: 1.2rem;
+}
+
+.tag {
+  display: inline-block;
+  font-size: 0.8rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 50px;
+  margin-bottom: 1rem;
+}
+
+.tag.members {
+  background: #ffb347;
+  color: #fff;
+}
+
+.tag.free {
+  background: #9ccc65;
+  color: #fff;
+}
+
+.recipe-card button {
+  background: #ff8c42;
+  color: white;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  align-self: center;
+  width: 80%;
+}
+
+/* Meal Plans Section */
+.meal-plans-section {
+  padding: 4rem 2rem;
+  background: #fffaf4;
+  text-align: center;
+}
+
+.meal-plans-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+  position: relative;
+}
+
+.plan-card {
+  background: transparent;
+  width: 280px;
+  height: 360px;
+  perspective: 1500px;
+  cursor: pointer;
+  position: relative;
+}
+
+.plan-front, .plan-back {
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  position: absolute;
+  backface-visibility: hidden;
+  background: white;
+  padding: 2rem;
+  box-sizing: border-box;
+  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow-y: auto;
+}
+
+.plan-front {
+  color: #ff8c42;
+  font-weight: 700;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  z-index: 2;
+}
+
+.plan-back {
+  transform: rotateY(180deg);
+  color: #555;
+  text-align: left;
+  z-index: 1;
+}
+
+.plan-card:hover .plan-front {
+  transform: rotateY(180deg);
+  z-index: 1;
+}
+
+.plan-card:hover .plan-back {
+  transform: rotateY(0deg);
+  z-index: 2;
+}
+
+.plan-back h4 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #ff8c42;
+}
+
+.plan-back ul {
+  margin: 0 0 1.5rem 1.2rem;
+  padding: 0;
+  list-style-type: disc;
+  font-size: 0.9rem;
+  max-height: 140px;
+  overflow-y: auto;
+}
+
+.plan-back p {
+  font-size: 0.95rem;
+  line-height: 1.3;
+}
+
+/* Join Section */
+.join-section {
+  background: #ff8c42;
+  color: white;
+  padding: 3rem 2rem;
+  text-align: center;
+  border-radius: 0 0 40px 40px;
+}
+
+.join-section h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.join-section p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+.join-section button {
+  background: white;
+  color: #ff8c42;
+  padding: 0.75rem 3rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s ease;
+}
+
+.join-section button:hover {
+  background: #ffb347;
+  color: white;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 1rem 0;
+  background: #fff;
+  color: #666;
+  font-size: 0.9rem;
+  box-shadow: 0 -2px 8px rgba(0,0,0,0.03);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  header {
+    flex-direction: column;
+  }
+  nav a {
+    margin: 0.5rem;
+  }
+  .meal-plans-grid {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+}
+
+/* Auth Buttons Styling */
+.auth-btn {
+  background: white;
+  color: #ff8c42;
+  padding: 0.5rem 1.2rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  margin-left: 1rem;
+}
+
+.auth-btn:hover {
+  background: #ff8c42;
+  color: white;
+  box-shadow: 0 4px 20px rgba(255, 140, 66, 0.4);
+  transform: scale(1.05);
+}
+
+.profile-pic {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-left: 1rem;
+  vertical-align: middle;
+  border: 2px solid #ff8c42;
+}

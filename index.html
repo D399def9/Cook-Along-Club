@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cook Along Club</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+  <script>
+    const firebaseConfig = {
+  apiKey: "AIzaSyDcZ8WtDN97yn2Kr2357oMVCJLFc_pnX-8",
+  authDomain: "cook-along-club.firebaseapp.com",
+  projectId: "cook-along-club",
+  storageBucket: "cook-along-club.firebasestorage.app",
+  messagingSenderId: "28924148794",
+  appId: "1:28924148794:web:5c65b097c587692ae34903",
+  measurementId: "G-NQLWEF2TMZ"
+};
+    firebase.initializeApp(firebaseConfig);
+  </script>
+</head>
+<body>
+  <header>
+  <h1>🍳 Cook Along Club</h1>
+
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Recipes</a>
+    <a href="#">Meal Plans</a>
+  </nav>
+
+  <div id="auth-buttons" style="display: flex; align-items: center;">
+    <button id="loginBtn" class="auth-btn">Sign In</button>
+    <div id="profileWrapper" style="display: none; align-items: center;">
+      <img id="userPic" src="" alt="Profile" class="profile-pic" />
+      <button id="logoutBtn" class="auth-btn">Logout</button>
+    </div>
+  </div>
+</header>
+
+  <section id="home" class="hero-v2">
+    <div class="hero-glass">
+      <h1>Cook Along Club 👨‍🍳</h1>
+      <p>Weekly interactive recipes, video cook-alongs, and exclusive member perks. Join the new way to learn cooking!</p>
+      <a href="#join" class="cta modern">Join Now</a>
+    </div>
+  </section>
+
+  <section id="recipes" class="recipes-section">
+    <h2>Exclusive Recipes 🍽️</h2>
+    <div class="recipe-grid">
+      <div class="recipe-card">
+        <img src="https://source.unsplash.com/400x300/?noodles" alt="Spicy Garlic Noodles" />
+        <div class="recipe-content">
+          <h3>Spicy Garlic Noodles</h3>
+          <span class="tag members">Members Only</span>
+          <button>View Recipe</button>
+        </div>
+      </div>
+      <div class="recipe-card">
+        <img src="https://source.unsplash.com/400x300/?curry" alt="Quick Vegan Curry" />
+        <div class="recipe-content">
+          <h3>Quick Vegan Curry</h3>
+          <span class="tag members">Members Only</span>
+          <button>View Recipe</button>
+        </div>
+      </div>
+      <div class="recipe-card">
+        <img src="https://source.unsplash.com/400x300/?breakfast" alt="Egg Muffins" />
+        <div class="recipe-content">
+          <h3>Breakfast Egg Muffins</h3>
+          <span class="tag free">Free</span>
+          <button>View Recipe</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="plans" class="meal-plans-section">
+    <h2>Weekly Meal Plans 🧾</h2>
+    <div class="meal-plans-grid">
+      <div class="plan-card">
+        <div class="plan-front">
+          <h3>Plan #1: Quick & Easy</h3>
+          <p>30 min meals for busy days</p>
+        </div>
+        <div class="plan-back">
+          <h4>Grocery List</h4>
+          <ul>
+            <li>Chicken breasts</li>
+            <li>Fresh spinach</li>
+            <li>Quinoa</li>
+            <li>Garlic & herbs</li>
+          </ul>
+          <h4>Nutrition</h4>
+          <p>Approx. 500 kcal/meal</p>
+        </div>
+      </div>
+      <div class="plan-card">
+        <div class="plan-front">
+          <h3>Plan #2: Vegan Delight</h3>
+          <p>Plant-based deliciousness</p>
+        </div>
+        <div class="plan-back">
+          <h4>Grocery List</h4>
+          <ul>
+            <li>Chickpeas</li>
+            <li>Kale</li>
+            <li>Sweet potatoes</li>
+            <li>Coconut milk</li>
+          </ul>
+          <h4>Nutrition</h4>
+          <p>Approx. 450 kcal/meal</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="join" class="join-section">
+    <h2>Become a Member 🎉</h2>
+    <p>Only $5/month to access all recipes, videos, and live sessions!</p>
+    <button onclick="firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider())">Join Now</button>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Cook Along Club. All rights reserved.</p>
+  </footer>
+
+  <script>
+  const loginBtn = document.getElementById('loginBtn');
+  const logoutBtn = document.getElementById('logoutBtn');
+  const profileWrapper = document.getElementById('profileWrapper');
+  const userPic = document.getElementById('userPic');
+
+  loginBtn.addEventListener('click', () => {
+    const provider = new firebase.auth.GoogleAuthProvider();
+    firebase.auth().signInWithPopup(provider);
+  });
+
+  logoutBtn.addEventListener('click', () => {
+    firebase.auth().signOut();
+  });
+
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      loginBtn.style.display = 'none';
+      profileWrapper.style.display = 'flex';
+      userPic.src = user.photoURL || 'https://via.placeholder.com/36';
+    } else {
+      loginBtn.style.display = 'inline-block';
+      profileWrapper.style.display = 'none';
+    }
+  });
+</script>
+</body>
+</html>
