@@ -29,7 +29,7 @@
 
     <nav>
       <a href="#">Home</a>
-      <a href="#">Recipes</a>
+      <a href="recipies.html">Recipes</a>
       <a href="#">Meal Plans</a>
     </nav>
 
@@ -46,7 +46,8 @@
     <div class="hero-glass">
       <h1>Cook Alone Club 👨‍🍳</h1>
       <p>Weekly interactive recipes, video cook-alongs, and exclusive member perks. Join the new way to learn cooking!</p>
-      <a href="#join" class="cta modern">Join Now</a>
+      <!-- Changed Join Now from <a> to <button> -->
+      <button id="joinBtn" class="cta modern">Join Now</button>
     </div>
   </section>
 
@@ -123,7 +124,7 @@
   <section id="join" class="join-section">
     <h2>Become a Member 🎉</h2>
     <p>Only $5/month to access all recipes, videos, and live sessions!</p>
-    <button onclick="firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider())">Join Now</button>
+    <!-- Removed old inline onclick here -->
   </section>
 
   <footer>
@@ -131,27 +132,32 @@
   </footer>
 
   <script>
-    const loginBtn = document.getElementById('loginBtn');
-    const logoutBtn = document.getElementById('logoutBtn');
-    const profileWrapper = document.getElementById('profileWrapper');
-    const userPic = document.getElementById('userPic');
-
-    loginBtn.addEventListener('click', () => {
-      const provider = new firebase.auth.GoogleAuthProvider();
-      firebase.auth().signInWithPopup(provider);
+    // Redirect login button to login page
+    document.getElementById('loginBtn').addEventListener('click', () => {
+      window.location.href = "login.html";
     });
 
+    // Redirect join now button to pases.html
+    document.getElementById('joinBtn').addEventListener('click', () => {
+      window.location.href = "pases.html";
+    });
+
+    // Logout button
+    const logoutBtn = document.getElementById('logoutBtn');
     logoutBtn.addEventListener('click', () => {
       firebase.auth().signOut();
     });
 
+    // Auth state change handler for showing profile
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        loginBtn.style.display = 'none';
+        document.getElementById('loginBtn').style.display = 'none';
+        const profileWrapper = document.getElementById('profileWrapper');
         profileWrapper.style.display = 'flex';
-        userPic.src = user.photoURL || 'https://via.placeholder.com/36';
+        document.getElementById('userPic').src = user.photoURL || 'https://via.placeholder.com/36';
       } else {
-        loginBtn.style.display = 'inline-block';
+        document.getElementById('loginBtn').style.display = 'inline-block';
+        const profileWrapper = document.getElementById('profileWrapper');
         profileWrapper.style.display = 'none';
       }
     });

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Login - Cook Alone Club</title>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyDcZ8WtDN97yn2Kr2357oMVCJLFc_pnX-8",
+      authDomain: "cook-along-club.firebaseapp.com",
+      projectId: "cook-along-club",
+      storageBucket: "cook-along-club.firebasestorage.app",
+      messagingSenderId: "28924148794",
+      appId: "1:28924148794:web:5c65b097c587692ae34903",
+      measurementId: "G-NQLWEF2TMZ"
+    };
+    firebase.initializeApp(firebaseConfig);
+  </script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      text-align: center;
+      padding: 2rem;
+    }
+    button {
+      font-size: 1.2rem;
+      padding: 0.8rem 2rem;
+      cursor: pointer;
+      background-color: #ff7f50;
+      border: none;
+      border-radius: 5px;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <h1>Login to Cook Alone Club</h1>
+  <button id="loginBtn">Sign in with Google</button>
+
+  <script>
+    document.getElementById('loginBtn').addEventListener('click', () => {
+      const provider = new firebase.auth.GoogleAuthProvider();
+      firebase.auth().signInWithPopup(provider)
+        .then(() => {
+          // Redirect after successful login
+          window.location.href = "index.html";
+        })
+        .catch(error => {
+          alert("Login failed: " + error.message);
+        });
+    });
+  </script>
+</body>
+</html>
