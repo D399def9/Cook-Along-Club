@@ -1,0 +1,61 @@
+/* styles.css */
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f9f9f9;
+}
+
+.container {
+  background: white;
+  padding: 40px 50px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  text-align: center;
+  max-width: 450px;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+p {
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+}
+
+a.button {
+  display: inline-block;
+  text-decoration: none;
+  background: #007bff;
+  color: white;
+  padding: 12px 30px;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+a.button:hover {
+  background: #0056b3;
+}
+
+/* Success and Cancel specific styles */
+body.success {
+  background: #e0f7e9;
+}
+
+body.success h1 {
+  color: #28a745;
+}
+
+body.cancel {
+  background: #fdecea;
+}
+
+body.cancel h1 {
+  color: #dc3545;
+}
